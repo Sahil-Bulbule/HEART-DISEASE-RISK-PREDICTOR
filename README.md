@@ -1,65 +1,56 @@
-# ❤️ Heart Disease Risk Predictor (Machine Learning Project)
+# Heart Disease Risk Predictor
 
-This project is a Machine Learning-based system that predicts the risk of heart disease based on patient medical attributes. It helps in early detection and analysis using data-driven approaches.
+A professional Streamlit application for cardiovascular risk assessment using a Support Vector Machine (SVM) model.
 
----
+## Setup
 
-## 🚀 Project Overview
+1. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Heart disease is one of the leading causes of death worldwide. This project uses machine learning algorithms to predict whether a person is at risk of heart disease based on input medical parameters.
+2. **Place your model files** in the same folder as `app.py`:
+   - `SVM2_Spam.pkl` — trained SVM model
+   - `scaler2.pkl` — fitted StandardScaler
+   - `columns2.pkl` — list/Index of training column names (after one-hot encoding)
 
----
+3. **Run the app:**
+   ```bash
+   streamlit run app.py
+   ```
 
-## 📊 Features
+## How the prediction works
 
-- Data preprocessing and cleaning
-- Handling categorical and numerical features
-- Label Encoding / Feature Scaling
-- Multiple ML models comparison
-- Accuracy and F1-score evaluation
-- Prediction system for new input data
+1. User fills in the form (Age, BP, Cholesterol, etc.)
+2. Categorical fields (Sex, ChestPainType, RestingECG, ExerciseAngina, ST_Slope) are one-hot encoded with `pd.get_dummies`
+3. The encoded dataframe is **re-indexed** to exactly match `columns2.pkl` (missing columns filled with 0, extra columns dropped)
+4. The aligned dataframe is scaled with `scaler2.pkl`
+5. `SVM2_Spam.pkl` predicts 0 or 1
+   - **0 → Low Risk — Healthy Parameters** (green card)
+   - **1 → High Cardiovascular Risk Detected** (red card)
 
----
+## Test values
 
-## 🧠 Machine Learning Models Used
+| Parameter | Low-Risk | High-Risk |
+|-----------|----------|-----------|
+| Age | 25 | 70 |
+| RestingBP | 110 | 180 |
+| Cholesterol | 150 | 350 |
+| FastingBS | 0 | 1 |
+| MaxHR | 180 | 90 |
+| Oldpeak | 0.0 | 4.0 |
+| Sex | Female | Male |
+| ChestPainType | ATA | ASY |
+| RestingECG | Normal | ST |
+| ExerciseAngina | N | Y |
+| ST_Slope | Up | Down |
 
-- Logistic Regression
-- Decision Tree
-- Random Forest
-- K-Nearest Neighbors (KNN)
-- Support Vector Machine (SVM)
+## Debugging
 
----
-
-## 🛠️ Tech Stack
-
-- Python 🐍
-- Pandas, NumPy
-- Scikit-learn
-- Matplotlib / Seaborn
-- Jupyter Notebook
-
----
-
-## 📈 Workflow
-
-1. Data Collection
-2. Data Preprocessing
-3. Feature Engineering
-4. Model Training
-5. Model Evaluation
-6. Prediction on new data
-
----
-
-## 🎯 Results
-
-- Compared multiple ML models
-- Selected best performing model based on accuracy & F1-score
-- Achieved reliable prediction performance on test data
-
----
-
-## 📌 How to Run
-
-streamlit run app.py
+Expand the **Debug Info** section after each prediction to inspect:
+- Raw model prediction value
+- Input dataframe before encoding
+- One-hot encoded dataframe
+- Aligned dataframe (matched to training columns)
+- Scaled array shape
+- Column mismatch report (columns added / dropped)
