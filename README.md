@@ -6,7 +6,7 @@ A machine learning-powered web application that predicts the potential risk of h
 
 * Modern and responsive Streamlit UI    
 * Heart disease risk prediction       
-* Real-time analysis      
+* Real-time analysis       
 * Interactive patient information form                
 * Secure and user-friendly interface     
 * Clinical parameter-based assessment           
