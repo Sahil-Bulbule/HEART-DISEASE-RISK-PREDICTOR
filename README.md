@@ -9,7 +9,7 @@ A machine learning-powered web application that predicts the potential risk of h
 * Real-time analysis    
 * Interactive patient information form              
 * Secure and user-friendly interface    
-* Clinical parameter-based assessment         
+* Clinical parameter-based assessment          
 * Professional healthcare-inspired design       
         
 ## 📊 Input Parameters  
