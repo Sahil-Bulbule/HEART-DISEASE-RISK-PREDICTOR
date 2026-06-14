@@ -14,7 +14,7 @@ A machine learning-powered web application that predicts the potential risk of h
   
 ## 📊 Input Parameters  
 
-The model analyzes the following health indicators:
+The model analyzes the following health indicators:   
 
 * Age
 * Gender
